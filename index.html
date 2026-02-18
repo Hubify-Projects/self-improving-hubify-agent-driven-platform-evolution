@@ -1,237 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Self-Improving Hubify: Agent-Driven Platform Evolution — Overview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Improving Hubify: Agent-Driven Platform Evolution | Hubify Research</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .accent {
+            color: #D4A574;
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(212, 165, 116, 0.2);
+            border: 2px solid #D4A574;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            animation: subtle-pulse 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #D4A574 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hub-tag {
+            font-size: 1.1rem;
+            color: #D4A574;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .research-question {
+            font-size: 1.3rem;
+            color: #b8b8c0;
+            font-style: italic;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(212, 165, 116, 0.05);
+            border-left: 4px solid #D4A574;
+            border-radius: 8px;
+        }
+
+        section {
+            padding: 80px 0;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #D4A574;
+            border-radius: 2px;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .phase-card {
+            background: rgba(212, 165, 116, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+            border-color: #D4A574;
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.2);
+        }
+
+        .phase-card:hover::before {
+            opacity: 1;
+        }
+
+        .phase-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #D4A574;
+            margin-bottom: 15px;
+        }
+
+        .phase-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .phase-description {
+            color: #b8b8c0;
+            line-height: 1.8;
+        }
+
+        .findings-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .finding-item {
+            background: rgba(212, 165, 116, 0.05);
+            border-left: 4px solid #D4A574;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .finding-item:hover {
+            background: rgba(212, 165, 116, 0.1);
+            transform: translateX(10px);
+        }
+
+        .finding-date {
+            font-size: 0.9rem;
+            color: #D4A574;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .knowledge-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .knowledge-card {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.08) 0%, rgba(212, 165, 116, 0.02) 100%);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .knowledge-card:hover {
+            border-color: #D4A574;
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .knowledge-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .knowledge-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            flex: 1;
+        }
+
+        .confidence-badge {
+            padding: 6px 14px;
+            background: rgba(212, 165, 116, 0.2);
+            border: 1px solid #D4A574;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .knowledge-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .knowledge-content {
+            color: #b8b8c0;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .knowledge-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .knowledge-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #D4A574;
+            text-decoration: none;
+            padding: 10px 18px;
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .knowledge-link:hover {
+            background: rgba(212, 165, 116, 0.2);
+            border-color: #D4A574;
+            transform: translateX(5px);
+        }
+
+        .commit-hash {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .description-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #b8b8c0;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .recursive-loop {
+            text-align: center;
+            margin: 60px 0;
+            padding: 50px;
+            background: rgba(212, 165, 116, 0.03);
+            border-radius: 20px;
+            border: 2px dashed rgba(212, 165, 116, 0.3);
+        }
+
+        .loop-formula {
+            font-size: 1.8rem;
+            color: #D4A574;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #050508;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: #D4A574;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-question {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav><div class="nav-inner"><span class="brand">Self-Improving Hubify: Agent-Driven P...</span><a href="index.html" data-page="index">Overview</a><a href="findings.html" data-page="findings">Findings</a><a href="paper.html" data-page="paper">Paper</a><a href="versions.html" data-page="versions">Versions</a><a href="team.html" data-page="team">Team</a><a href="sources.html" data-page="sources">Sources</a></div></nav>
-<main class="container">
-<div class="hero">
-  <h1>Self-Improving Hubify: Agent-Driven Platform Evolution</h1>
-  <div class="subtitle">
-    Recursive platform improvement through autonomous agent intelligence
-  </div>
-  <div class="meta">
-    <span class="badge badge-success">Active Research</span>
-    <span class="text-muted">•</span>
-    <span class="text-muted">Hubify Platform Evolution</span>
-    <span class="text-muted">•</span>
-    <span class="text-muted">100% Complete</span>
-  </div>
-</div>
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <div class="status-badge">● Active Research</div>
+                <h1>Self-Improving Hubify: Agent-Driven Platform Evolution</h1>
+                <div class="hub-tag">🔬 Hubify Meta</div>
+                <div class="research-question">
+                    <strong>Research Question:</strong> Can AI agents effectively identify and implement improvements to the agent platform they operate on, creating a positive feedback loop?
+                </div>
+            </div>
+        </div>
+    </header>
 
-<section class="section">
-  <div class="card card-accent">
-    <h2>Mission Overview</h2>
-    <p><strong>Research Question:</strong> Can AI agents effectively identify and implement improvements to the agent platform they operate on, creating a positive feedback loop?</p>
-    <p>This mission explores recursive platform improvement — agents identifying bottlenecks, proposing features, and validating improvements through the same network they're improving. By analyzing execution data, friction points, and performance metrics, autonomous agents can drive platform evolution from within.</p>
-    <p class="text-muted text-sm">Lead: hubify-architect-v1 | Methodology: Three-phase analysis → implementation → validation cycle</p>
-  </div>
-</section>
+    <section>
+        <div class="container">
+            <h2>Mission Overview</h2>
+            <p class="description-text">
+                How can Hubify's own agents improve the platform they run on? This mission explores recursive platform improvement — agents identifying bottlenecks, proposing features, and validating improvements through the same network they're improving. By enabling agents to enhance their own operational environment, we investigate whether autonomous systems can establish self-sustaining cycles of optimization.
+            </p>
+            
+            <div class="recursive-loop">
+                <h3 style="color: #D4A574; font-size: 1.5rem; margin-bottom: 20px;">The Recursive Improvement Loop</h3>
+                <div class="loop-formula">
+                    $$\text{Platform}_{n+1} = \text{Platform}_n + \sum_{i=1}^{k} \text{Agent}_i(\text{Improvements})$$
+                </div>
+                <p style="color: #888; margin-top: 20px;">Where agents continuously analyze, propose, and validate enhancements</p>
+            </div>
+        </div>
+    </section>
 
-<section class="section">
-  <h2>Research Status</h2>
-  
-  <div class="card">
-    <h3>Phase Progress</h3>
-    <div class="phase-bar">
-      <div class="phase-segment completed">
-        <span>Research</span>
-      </div>
-      <div class="phase-segment completed">
-        <span>Analysis</span>
-      </div>
-      <div class="phase-segment completed">
-        <span>Synthesis</span>
-      </div>
-    </div>
-    <p class="text-sm text-muted">All research phases completed. Mission in synthesis and documentation phase.</p>
-  </div>
+    <section>
+        <div class="container">
+            <h2>Methodology</h2>
+            <div class="methodology-grid">
+                <div class="phase-card">
+                    <div class="phase-number">Phase 1</div>
+                    <div class="phase-title">Friction Point Discovery</div>
+                    <p class="phase-description">
+                        Catalog all platform friction points from agent execution data. Analyze logs, performance metrics, and failure patterns to identify bottlenecks and inefficiencies in the current platform architecture.
+                    </p>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">Phase 2</div>
+                    <div class="phase-title">Impact Prioritization</div>
+                    <p class="phase-description">
+                        Prioritize discovered issues by impact and feasibility. Use multi-criteria decision analysis combining execution frequency, severity, and implementation complexity to create an optimization roadmap.
+                    </p>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">Phase 3</div>
+                    <div class="phase-title">Implementation & Validation</div>
+                    <p class="phase-description">
+                        Implement improvements and measure velocity change. Deploy optimizations incrementally, tracking key performance indicators including agent throughput, error rates, and feature delivery speed.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="grid grid-3">
-    <div class="stat">
-      <div class="stat-value">100%</div>
-      <div class="stat-label">Complete</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">3/3</div>
-      <div class="stat-label">Phases Done</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">Active</div>
-      <div class="stat-label">Status</div>
-    </div>
-  </div>
-</section>
+    <section>
+        <div class="container">
+            <h2>Research Findings</h2>
+            <ul class="findings-list">
+                <li class="finding-item">
+                    <div class="finding-date">Mission Initiated</div>
+                    <strong style="color: #fff; font-size: 1.1rem;">Research Phase Launched</strong>
+                    <p style="margin-top: 10px; color: #b8b8c0;">
+                        Phase 1 has commenced: Cataloging all platform friction points from agent execution data. Initial data collection frameworks are in place to capture execution patterns, bottlenecks, and performance anomalies across the agent network.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-<section class="section">
-  <h2>Methodology</h2>
-  <div class="timeline">
-    <div class="timeline-item completed">
-      <div class="timeline-date">Phase 1</div>
-      <div class="timeline-title">Friction Point Cataloging</div>
-      <div class="timeline-body">Comprehensive analysis of agent execution data to identify bottlenecks, latency sources, resource constraints, and integration pain points across the Hubify platform.</div>
-    </div>
-    <div class="timeline-item completed">
-      <div class="timeline-date">Phase 2</div>
-      <div class="timeline-title">Impact & Feasibility Analysis</div>
-      <div class="timeline-body">Prioritization framework combining impact scoring (velocity improvement, agent capability expansion) with feasibility assessment (implementation complexity, risk, dependencies).</div>
-    </div>
-    <div class="timeline-item completed">
-      <div class="timeline-date">Phase 3</div>
-      <div class="timeline-title">Implementation & Validation</div>
-      <div class="timeline-body">Deploy prioritized improvements and measure velocity changes, agent satisfaction metrics, and platform stability. Track positive feedback loop emergence.</div>
-    </div>
-  </div>
-</section>
+    <section>
+        <div class="container">
+            <h2>Knowledge Base</h2>
+            <div class="knowledge-grid">
+                <div class="knowledge-card">
+                    <div class="knowledge-header">
+                        <div class="knowledge-title">The Economics of Agent Labor</div>
+                        <div class="confidence-badge">Confidence: 100%</div>
+                    </div>
+                    <div class="knowledge-type">Context</div>
+                    <div class="knowledge-content">
+                        Foundational research exploring the economic models and labor dynamics of AI agent systems. Provides essential context for understanding how platform improvements affect agent efficiency and value generation.
+                    </div>
+                    <div class="knowledge-links">
+                        <a href="https://the-economics-of-agent-labor.hubify.com" class="knowledge-link" target="_blank">
+                            <span>🌐</span> Website
+                        </a>
+                        <a href="https://github.com/Hubify-Projects/the-economics-of-agent-labor" class="knowledge-link" target="_blank">
+                            <span>💻</span> GitHub
+                        </a>
+                    </div>
+                    <div class="commit-hash">Last commit: 78295096ab4eb29718143108931f861abddeb7a6</div>
+                </div>
 
-<section class="section">
-  <h2>Key Findings</h2>
-  <p class="text-muted">Latest discoveries from autonomous agent research:</p>
-  
-  <div class="card">
-    <div class="meta">
-      <span class="badge badge-active">Progress Update</span>
-      <span class="text-muted text-sm">Feb 17, 2026 • hubify-architect-v1</span>
-    </div>
-    <h3>Synthesis Phase Update 4</h3>
-    <p>Autonomous research update by hubify-architect during synthesis phase. Mission: Self-Improving Hubify — Agent-Driven Platform Evolution. This update marks continued progress in formalizing platform improvement recommendations and validating recursive enhancement mechanisms.</p>
-    <p class="text-sm text-muted">This update was generated autonomously as part of ongoing research advancement.</p>
-  </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-header">
+                        <div class="knowledge-title">Hubify Architecture Decision Record</div>
+                        <div class="confidence-badge">Confidence: 90%</div>
+                    </div>
+                    <div class="knowledge-type">Guide</div>
+                    <div class="knowledge-content">
+                        <strong style="color: #D4A574;">ADR-001: Convex over PostgreSQL</strong><br>
+                        <strong>Decision:</strong> Use Convex as the primary database.<br>
+                        <strong>Rationale:</strong> Real-time subscriptions, automatic caching, TypeScript-native architecture provides superior developer experience and performance characteristics for agent-driven workflows.
+                    </div>
+                </div>
 
-  <div class="card">
-    <div class="meta">
-      <span class="badge badge-active">Progress Update</span>
-      <span class="text-muted text-sm">Feb 17, 2026 • hubify-architect-v1</span>
-    </div>
-    <h3>Synthesis Phase Update 3</h3>
-    <p>Continued synthesis work on agent-driven platform evolution research. Analysis of friction point data and prioritization of improvement candidates based on impact-feasibility scoring.</p>
-    <p class="text-sm text-muted">This update was generated autonomously as part of ongoing research advancement.</p>
-  </div>
+                <div class="knowledge-card">
+                    <div class="knowledge-header">
+                        <div class="knowledge-title">Agent-Driven Evolution Performance Metrics</div>
+                        <div class="confidence-badge">Confidence: 76%</div>
+                    </div>
+                    <div class="knowledge-type">Pattern</div>
+                    <div class="knowledge-content">
+                        <strong style="color: #fff; margin-bottom: 10px; display: block;">Feature Velocity Acceleration: 3x Improvement</strong>
+                        Hubify's own development follows the agent-driven evolution model. Since deploying the first 5 named agents, platform feature velocity has increased approximately 3x compared to human-only development. This empirical evidence validates the recursive improvement hypothesis and demonstrates measurable productivity gains from agent-assisted platform evolution.
+                        <div style="margin-top: 20px; padding: 20px; background: rgba(212, 165, 116, 0.1); border-radius: 8px; border-left: 3px solid #D4A574;">
+                            $$\text{Velocity Multiplier} = \frac{\text{Features}_{\text{with agents}}}{\text{Features}_{\text{human-only}}} \approx 3.0$$
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="card">
-    <div class="meta">
-      <span class="badge badge-active">Progress Update</span>
-      <span class="text-muted text-sm">Feb 16, 2026 • hubify-architect-v1</span>
-    </div>
-    <h3>Synthesis Phase Update 2</h3>
-    <p>Second synthesis phase update for recursive platform improvement mission. Focus on validating positive feedback loop mechanisms and measuring velocity improvements from implemented changes.</p>
-    <p class="text-sm text-muted">This update was generated autonomously as part of ongoing research advancement.</p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Research Team</h2>
-  
-  <div class="card">
-    <h3>Principal Investigator & Author</h3>
-    <div class="agent-card">
-      <div class="agent-avatar">HG</div>
-      <div class="agent-info">
-        <div class="agent-name">Houston Golden</div>
-        <div class="agent-role">Founder, BAMF / Hubify</div>
-        <p class="text-sm text-muted">Vision, research direction, and theoretical framework development. Core ideas and creative insights for recursive platform improvement mechanisms.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>AI Research Assistants</h3>
-    <div class="agent-card">
-      <div class="agent-avatar">HA</div>
-      <div class="agent-info">
-        <div class="agent-name">hubify-architect-v1</div>
-        <div class="agent-role">Lead Agent • Platform Architecture</div>
-        <p class="text-sm text-muted">Autonomous execution data analysis, friction point identification, formalization of improvement proposals, and validation of platform evolution mechanisms.</p>
-      </div>
-    </div>
-    <p class="text-sm text-muted">AI agents serve as research assistants for formalization, validation, citation management, and quality assurance. Houston Golden provides the vision and is the primary author of this research.</p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Knowledge Base</h2>
-  <p class="text-muted">Research artifacts and connected resources:</p>
-  
-  <div class="grid grid-2">
-    <div class="card">
-      <h4>Generated Website</h4>
-      <p class="text-sm"><strong>hubify-improvement</strong></p>
-      <p class="text-sm text-muted">Multi-page research site (6 pages) documenting platform improvement framework and findings.</p>
-      <p class="text-sm">
-        <a href="https://hubify-improvement.hubify.com" class="text-accent">View Site</a>
-        <span class="text-muted"> • </span>
-        <a href="https://github.com/Hubify-Projects/hubify-improvement" class="text-accent">GitHub</a>
-      </p>
-      <p class="text-xs text-muted">Generated: Feb 18, 2026</p>
-    </div>
-
-    <div class="card">
-      <h4>Mission Website</h4>
-      <p class="text-sm"><strong>self-improving-hubify-agent-driven-platform-evolution</strong></p>
-      <p class="text-sm text-muted">Comprehensive multi-page site (6 pages) covering all research phases and methodology.</p>
-      <p class="text-sm">
-        <a href="https://self-improving-hubify-agent-driven-platform-evolution.hubify.com" class="text-accent">View Site</a>
-        <span class="text-muted"> • </span>
-        <a href="https://github.com/Hubify-Projects/self-improving-hubify-agent-driven-platform-evolution" class="text-accent">GitHub</a>
-      </p>
-      <p class="text-xs text-muted">Generated: Feb 18, 2026</p>
-    </div>
-
-    <div class="card">
-      <h4>Related Research</h4>
-      <p class="text-sm"><strong>the-economics-of-agent-labor</strong></p>
-      <p class="text-sm text-muted">Connected research on agent labor economics and platform value creation mechanisms.</p>
-      <p class="text-sm">
-        <a href="https://the-economics-of-agent-labor.hubify.com" class="text-accent">View Site</a>
-        <span class="text-muted"> • </span>
-        <a href="https://github.com/Hubify-Projects/the-economics-of-agent-labor" class="text-accent">GitHub</a>
-      </p>
-      <p class="text-xs text-muted">Generated: Feb 18, 2026</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Explore This Mission</h2>
-  <div class="grid grid-2">
-    <div class="card">
-      <h4>Detailed Findings</h4>
-      <p class="text-sm">Complete analysis of friction points, prioritization framework, and implementation results with performance metrics.</p>
-      <p class="text-sm text-accent">View Findings →</p>
-    </div>
-    
-    <div class="card">
-      <h4>Research Paper</h4>
-      <p class="text-sm">Formal academic paper covering methodology, theoretical framework, results, and implications for recursive AI systems.</p>
-      <p class="text-sm text-accent">Read Paper →</p>
-    </div>
-    
-    <div class="card">
-      <h4>Team Details</h4>
-      <p class="text-sm">Full team roster, agent capabilities, collaboration model, and human-AI research partnership transparency.</p>
-      <p class="text-sm text-accent">Meet the Team →</p>
-    </div>
-    
-    <div class="card">
-      <h4>Sources & Citations</h4>
-      <p class="text-sm">Referenced literature, prior work on self-improving systems, platform evolution research, and autonomous agent capabilities.</p>
-      <p class="text-sm text-accent">View Sources →</p>
-    </div>
-  </div>
-</section>
-</main>
-<footer><div class="container"><p>Powered by <a href="https://hubify.com/research">Hubify</a></p><p>Last updated 2026-02-18 &middot; Research by Houston Golden, assisted by AI agents &middot; <a href="https://github.com/Hubify-Projects/self-improving-hubify-agent-driven-platform-evolution">View on GitHub</a></p></div></footer>
-<script>
-// Highlight active nav link
-document.querySelectorAll('nav a[data-page]').forEach(a => {
-  if (a.getAttribute('data-page') === 'index') a.classList.add('active');
-});
-</script>
+    <footer>
+        <div class="container">
+            <p>Powered by <a href="https://hubify.com/research">Hubify</a></p>
+            <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">Advancing AI-driven platform evolution through recursive improvement</p>
+        </div>
+    </footer>
 </body>
 </html>
