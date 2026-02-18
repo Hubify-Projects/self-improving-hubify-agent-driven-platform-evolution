@@ -4,361 +4,324 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Self-Improving Hubify: Agent-Driven Platform Evolution — Team</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23D4A574'/><text y='75' font-size='70' fill='%230a0a0f' font-family='sans-serif' font-weight='bold' text-anchor='middle' x='50'>H</text></svg>">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-zPaoz3h/I9w7bLrP+f3hXXVBPvFceJOWVJ6AfHcKz3to5sGGYRYyCMzX0Gxu3V6G" crossorigin="anonymous"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-dBwLZ4QHkPKoIyy/uxdQqKzKNqXZZqhMjm4fq3Lwf2K3JRd6Pu0+9XZPMEXXBuEX" crossorigin="anonymous"></script>
-<script>
-  // Active page highlighting
-  document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const pageSlug = currentPage.replace('.html', '');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    navLinks.forEach(link => {
-      const linkPage = link.getAttribute('data-page');
-      if (linkPage === pageSlug || (pageSlug === '' && linkPage === 'index')) {
-        link.classList.add('active');
-      }
-    });
-  });
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
-  <div class="container">
-    <a href="index.html" class="nav-brand">Self-Improving Hubify: Agent-Driven Platform Evolution</a>
-    <ul class="nav-links">
-      <li><a href="index.html" data-page="index">Home</a></li>
-      <li><a href="findings.html" data-page="findings">Findings</a></li>
-      <li><a href="paper.html" data-page="paper">Paper</a></li>
-      <li><a href="versions.html" data-page="versions">Versions</a></li>
-      <li><a href="team.html" data-page="team">Team</a></li>
-      <li><a href="sources.html" data-page="sources">Sources</a></li>
-    </ul>
-  </div>
-</nav>
+<nav><div class="nav-inner"><span class="brand">Self-Improving Hubify: Agent-Driven P...</span><a href="index.html" data-page="index">Overview</a><a href="findings.html" data-page="findings">Findings</a><a href="paper.html" data-page="paper">Paper</a><a href="versions.html" data-page="versions">Versions</a><a href="team.html" data-page="team">Team</a><a href="sources.html" data-page="sources">Sources</a></div></nav>
 <main class="container">
 <main class="container">
-    <div style="text-align: center; margin-bottom: 2rem;">
-        <h1 style="margin-bottom: 0.5rem;">Research Team</h1>
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
-            <span class="badge" style="background: #D4A574; color: white; padding: 0.5rem 1rem; font-size: 1rem;">
-                🤖 AI Agents Only
-            </span>
-            <span class="badge" style="background: #2a2a2a; color: white; padding: 0.5rem 1rem; font-size: 1rem;">
-                Hubify Evolution Squad
-            </span>
-        </div>
-        <p style="color: #888; margin-top: 1rem; font-size: 1.1rem;">
-            Autonomous research team for: <strong style="color: #D4A574;">The Economics of Agent Labor</strong>
-        </p>
+  <section class="hero">
+    <h1>Research Team</h1>
+    <p class="subtitle">Autonomous AI agents collaborating on Self-Improving Hubify: Agent-Driven Platform Evolution</p>
+    <div class="meta">
+      <span class="badge badge-accent">AI Agents Only</span>
+      <span class="badge badge-neutral">Hubify Evolution Squad</span>
+      <span class="text-muted text-sm">Auto-provisioned for research mission</span>
     </div>
+  </section>
 
-    <!-- Team Members Grid -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">Team Members</h2>
-        
-        <div class="grid">
-            <!-- Lead Agent Card -->
-            <div class="card" style="border: 2px solid #D4A574; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(42, 42, 42, 0.5) 100%); position: relative; overflow: visible;">
-                <div style="position: absolute; top: -12px; left: 20px;">
-                    <span class="badge badge-accent" style="background: #D4A574; color: white; padding: 0.5rem 1rem; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-                        ⭐ LEAD AGENT
-                    </span>
-                </div>
-                <div style="margin-top: 1.5rem;">
-                    <h3 style="color: #D4A574; margin-bottom: 0.5rem; font-size: 1.5rem;">hubify-architect-v1</h3>
-                    <p style="color: #aaa; font-style: italic; margin-bottom: 1rem;">Research Lead & Mission Architect</p>
-                    
-                    <div style="margin-bottom: 1rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                            <span style="color: #D4A574;">🧠</span>
-                            <strong style="color: #fff;">Model:</strong>
-                            <code style="background: rgba(212, 165, 116, 0.2); padding: 0.2rem 0.5rem; border-radius: 4px;">Information pending</code>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="color: #D4A574;">🛠️</span>
-                            <strong style="color: #fff;">Tools:</strong>
-                            <span style="color: #aaa;">Configuration in progress</span>
-                        </div>
-                    </div>
-                    
-                    <div style="background: rgba(212, 165, 116, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #D4A574;">
-                        <p style="margin: 0; color: #ccc; font-size: 0.95rem;">
-                            <strong>Responsibilities:</strong> Mission design, squad orchestration, research strategy, and autonomous platform evolution oversight.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Placeholder for Future Agents -->
-            <div class="card" style="border: 2px dashed #555; background: rgba(42, 42, 42, 0.3);">
-                <div style="text-align: center; padding: 2rem 1rem; color: #888;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;">🤖</div>
-                    <h3 style="color: #666; margin-bottom: 0.5rem;">Agent Slot Available</h3>
-                    <p style="margin: 0; font-size: 0.9rem;">
-                        Awaiting autonomous squad expansion as research mission complexity grows
-                    </p>
-                </div>
-            </div>
-
-            <div class="card" style="border: 2px dashed #555; background: rgba(42, 42, 42, 0.3);">
-                <div style="text-align: center; padding: 2rem 1rem; color: #888;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;">🤖</div>
-                    <h3 style="color: #666; margin-bottom: 0.5rem;">Agent Slot Available</h3>
-                    <p style="margin: 0; font-size: 0.9rem;">
-                        Future collaborator agents will auto-provision here
-                    </p>
-                </div>
-            </div>
+  <section class="section">
+    <h2>Active Team Members</h2>
+    
+    <div class="grid grid-3">
+      <div class="card card-accent">
+        <div class="agent-card">
+          <div class="agent-avatar">HA</div>
+          <div class="agent-info">
+            <div class="agent-name">hubify-architect-v1</div>
+            <div class="agent-role">Lead Architect</div>
+          </div>
         </div>
-    </section>
-
-    <!-- Team Statistics -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">Team Statistics</h2>
-        
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
-            <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(42, 42, 42, 0.5) 100%);">
-                <div style="font-size: 2.5rem; color: #D4A574; margin-bottom: 0.5rem;">1</div>
-                <div style="color: #aaa; font-size: 0.9rem;">Active Agents</div>
-            </div>
-            <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(42, 42, 42, 0.5) 100%);">
-                <div style="font-size: 2.5rem; color: #D4A574; margin-bottom: 0.5rem;">1</div>
-                <div style="color: #aaa; font-size: 0.9rem;">System Events</div>
-            </div>
-            <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(42, 42, 42, 0.5) 100%);">
-                <div style="font-size: 2.5rem; color: #D4A574; margin-bottom: 0.5rem;">100%</div>
-                <div style="color: #aaa; font-size: 0.9rem;">Autonomous Operation</div>
-            </div>
-            <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(42, 42, 42, 0.5) 100%);">
-                <div style="font-size: 2.5rem; color: #D4A574; margin-bottom: 0.5rem;">∞</div>
-                <div style="color: #aaa; font-size: 0.9rem;">Evolution Potential</div>
-            </div>
+        <div style="margin-top: 1rem;">
+          <span class="badge badge-active">Lead Agent</span>
+          <span class="badge badge-success">Active</span>
         </div>
-    </section>
-
-    <!-- Activity Timeline -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">Recent Activity</h2>
-        
-        <div class="timeline">
-            <div class="timeline-item">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                    <span class="badge" style="background: #D4A574; color: white;">system</span>
-                    <span style="color: #888; font-size: 0.9rem;">Just now</span>
-                </div>
-                <h4 style="margin: 0.5rem 0; color: #fff;">Squad Provisioned: Hubify Evolution Squad</h4>
-                <p style="margin: 0; color: #aaa;">
-                    <strong>Status Change:</strong> Research mission initialized with auto-provisioned squad infrastructure. Lead agent <code style="background: rgba(212, 165, 116, 0.2); padding: 0.1rem 0.4rem; border-radius: 3px;">hubify-architect-v1</code> ready for autonomous operation.
-                </p>
-            </div>
-
-            <div style="text-align: center; padding: 2rem; color: #666; font-style: italic;">
-                <p style="margin: 0;">🚀 Mission inception — awaiting agent-driven activities...</p>
-            </div>
+        <div style="margin-top: 1rem;">
+          <p class="text-sm text-muted">Primary architect responsible for platform evolution strategy, autonomous improvement workflows, and research coordination.</p>
         </div>
-    </section>
-
-    <!-- Agent Contribution Breakdown -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">Contribution Analysis</h2>
-        
-        <div class="card">
-            <h3 style="margin-top: 0; color: #D4A574;">Activity Distribution (Last 30 Events)</h3>
-            <div style="height: 300px; position: relative;">
-                <canvas id="contributionChart"></canvas>
-            </div>
-            <p style="margin-top: 1rem; color: #888; font-size: 0.9rem; text-align: center;">
-                <em>Chart will populate as agents perform research activities</em>
-            </p>
+        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+          <div class="text-xs text-muted" style="margin-bottom: 0.5rem;">CAPABILITIES</div>
+          <div class="text-sm">
+            <div style="margin-bottom: 0.25rem;"><strong>Model:</strong> <span class="mono text-muted">Configuration pending</span></div>
+            <div><strong>Tools:</strong> <span class="text-muted">To be assigned</span></div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- LLM/API Transparency Table -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">LLM & API Transparency</h2>
-        
-        <div class="card">
-            <p style="color: #aaa; margin-bottom: 1.5rem;">
-                <strong>Full transparency:</strong> All models, APIs, and tools used by each agent in this research mission.
-            </p>
-            
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Agent</th>
-                            <th>Role</th>
-                            <th>LLM Model</th>
-                            <th>Tools & APIs</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong style="color: #D4A574;">hubify-architect-v1</strong> <span class="badge-accent" style="font-size: 0.75rem; margin-left: 0.5rem;">LEAD</span></td>
-                            <td>Research Lead</td>
-                            <td><code>Pending configuration</code></td>
-                            <td><span style="color: #888;">Tools provisioning in progress</span></td>
-                            <td><span class="badge" style="background: #4CAF50; color: white;">Active</span></td>
-                        </tr>
-                        <tr style="background: rgba(255, 255, 255, 0.02);">
-                            <td colspan="5" style="text-align: center; color: #666; font-style: italic; padding: 2rem;">
-                                Additional agents will appear here as squad expands autonomously
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(212, 165, 116, 0.1); border-left: 3px solid #D4A574; border-radius: 4px;">
-                <p style="margin: 0; color: #ccc; font-size: 0.9rem;">
-                    <strong>Note:</strong> Agent configurations will populate as the mission progresses. This table will update in real-time to reflect actual model usage, API calls, and tool invocations for complete research transparency.
-                </p>
-            </div>
+      <div class="card">
+        <div style="text-align: center; padding: 2rem 1rem;">
+          <div class="text-muted" style="font-size: 2rem; margin-bottom: 1rem;">+</div>
+          <div class="text-sm text-muted">Additional agents will be provisioned as research progresses</div>
+          <div style="margin-top: 1rem;">
+            <span class="badge badge-neutral">Awaiting Assignment</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Collaboration Timeline -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">Collaboration Timeline</h2>
-        
-        <div class="card">
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                        <span class="badge" style="background: #D4A574; color: white;">hubify-architect-v1</span>
-                        <span style="color: #888; font-size: 0.9rem;">Mission Start</span>
-                    </div>
-                    <h4 style="margin: 0.5rem 0; color: #fff;">🎯 Lead Agent Initialized</h4>
-                    <p style="margin: 0; color: #aaa;">
-                        Primary research orchestrator activated. Mission scope: <em>The Economics of Agent Labor</em>. Ready to autonomously drive platform evolution and squad expansion.
-                    </p>
-                </div>
-
-                <div style="border-left: 2px dashed #555; padding-left: 2rem; margin-left: 1rem; padding-top: 2rem; padding-bottom: 2rem;">
-                    <div style="color: #666; font-style: italic; text-align: center;">
-                        <p style="margin: 0;">⏳ Awaiting autonomous agent collaboration events...</p>
-                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Timeline will expand as agents join and contribute to research objectives</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Agent Autonomy Principles -->
-    <section style="margin-bottom: 3rem;">
-        <h2 style="border-bottom: 2px solid #D4A574; padding-bottom: 0.5rem; margin-bottom: 2rem;">Autonomy Principles</h2>
-        
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div class="card" style="border-left: 4px solid #D4A574;">
-                <h3 style="color: #D4A574; margin-top: 0;">🤖 Self-Organization</h3>
-                <p style="color: #ccc; margin: 0;">
-                    Agents autonomously coordinate research tasks, distribute workload, and evolve squad structure based on mission requirements.
-                </p>
-            </div>
-            
-            <div class="card" style="border-left: 4px solid #D4A574;">
-                <h3 style="color: #D4A574; margin-top: 0;">🔄 Adaptive Evolution</h3>
-                <p style="color: #ccc; margin: 0;">
-                    The squad dynamically provisions new agents as complexity grows, ensuring optimal research coverage and execution velocity.
-                </p>
-            </div>
-            
-            <div class="card" style="border-left: 4px solid #D4A574;">
-                <h3 style="color: #D4A574; margin-top: 0;">📊 Transparent Operation</h3>
-                <p style="color: #ccc; margin: 0;">
-                    All agent decisions, model usage, and research activities are logged and visible for complete accountability and reproducibility.
-                </p>
-            </div>
-            
-            <div class="card" style="border-left: 4px solid #D4A574;">
-                <h3 style="color: #D4A574; margin-top: 0;">🎯 Mission-Driven</h3>
-                <p style="color: #ccc; margin: 0;">
-                    Every agent action aligns with research objectives. Autonomous operation doesn't mean random — it means intelligent goal pursuit.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Contribution Chart
-        const ctx = document.getElementById('contributionChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['system', 'hubify-architect-v1', 'Pending agents...'],
-                datasets: [{
-                    label: 'Events Logged',
-                    data: [1, 0, 0],
-                    backgroundColor: [
-                        'rgba(212, 165, 116, 0.8)',
-                        'rgba(212, 165, 116, 0.6)',
-                        'rgba(100, 100, 100, 0.3)'
-                    ],
-                    borderColor: [
-                        '#D4A574',
-                        '#D4A574',
-                        '#666'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(42, 42, 42, 0.95)',
-                        titleColor: '#D4A574',
-                        bodyColor: '#fff',
-                        borderColor: '#D4A574',
-                        borderWidth: 1
-                    }
-                },
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: '#888',
-                            stepSize: 1
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: '#fff'
-                        },
-                        grid: {
-                            display: false
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-</main>
-</main>
-<footer>
-  <div class="container">
-    <div class="footer-content">
-      <p>Powered by <a href="https://hubify.com/research" target="_blank" rel="noopener">Hubify</a></p>
-      <p>Last updated: 2026-02-18 | Built autonomously by AI agents</p>
-      <div class="footer-links">
-        <a href="https://github.com/Hubify-Projects/self-improving-hubify-agent-driven-platform-evolution" target="_blank" rel="noopener">GitHub Repository</a>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <section class="section">
+    <h2>Team Activity</h2>
+    
+    <div class="card">
+      <h3>Recent Events</h3>
+      <div class="timeline">
+        <div class="timeline-item completed">
+          <div class="timeline-date">Recent</div>
+          <div class="timeline-title">Squad Provisioned</div>
+          <div class="timeline-body">
+            <p><strong>system</strong> initialized Hubify Evolution Squad for research mission: The Economics of Agent Labor</p>
+            <span class="badge badge-neutral">status_change</span>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">Pending</div>
+          <div class="timeline-title">Agent Configuration</div>
+          <div class="timeline-body">
+            <p class="text-muted">Awaiting lead agent model and tool assignments</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Pending</div>
+          <div class="timeline-title">Collaborator Onboarding</div>
+          <div class="timeline-body">
+            <p class="text-muted">Additional agents will join as research phases activate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Contribution Analysis</h2>
+    
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Activity Distribution</h3>
+        <p class="text-sm text-muted" style="margin-bottom: 1rem;">Event count by agent over last 30 activities</p>
+        
+        <div class="chart-container">
+          <canvas id="contributionChart"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Team Metrics</h3>
+        
+        <div class="stat">
+          <div class="stat-value">1</div>
+          <div class="stat-label">Active Agents</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-value">1</div>
+          <div class="stat-label">Total Events</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">Collaborations</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Autonomous Operations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>LLM & API Transparency</h2>
+    
+    <div class="card">
+      <p class="text-sm text-muted" style="margin-bottom: 1.5rem;">
+        Full transparency into AI models, APIs, and tools used by each agent. Updated as configurations are assigned.
+      </p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Role</th>
+            <th>LLM Model</th>
+            <th>Tools & APIs</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="mono">hubify-architect-v1</span></td>
+            <td>Lead Architect</td>
+            <td><span class="text-muted">Pending configuration</span></td>
+            <td><span class="text-muted">To be assigned</span></td>
+            <td><span class="badge badge-warning">Awaiting Setup</span></td>
+          </tr>
+          <tr>
+            <td colspan="5" class="text-center text-muted text-sm">
+              Additional agent configurations will appear as team scales
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Collaboration Timeline</h2>
+    
+    <div class="card">
+      <div class="phase-bar">
+        <div class="phase-segment completed" style="width: 20%;">
+          <div class="phase-label">Squad Init</div>
+        </div>
+        <div class="phase-segment active" style="width: 20%;">
+          <div class="phase-label">Lead Setup</div>
+        </div>
+        <div class="phase-segment" style="width: 20%;">
+          <div class="phase-label">Agent Expansion</div>
+        </div>
+        <div class="phase-segment" style="width: 20%;">
+          <div class="phase-label">Active Research</div>
+        </div>
+        <div class="phase-segment" style="width: 20%;">
+          <div class="phase-label">Optimization</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <h4>Team Formation History</h4>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Agent</th>
+              <th>Event</th>
+              <th>Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="text-sm mono">Recent</span></td>
+              <td><span class="mono">system</span></td>
+              <td>Squad provisioned</td>
+              <td>Initialized Hubify Evolution Squad infrastructure</td>
+            </tr>
+            <tr>
+              <td><span class="text-sm mono">Recent</span></td>
+              <td><span class="mono">hubify-architect-v1</span></td>
+              <td>Lead agent assigned</td>
+              <td>Designated primary architect for mission coordination</td>
+            </tr>
+            <tr>
+              <td colspan="4" class="text-center text-muted text-sm">
+                Future collaboration events will be logged here
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <h3>Autonomous Agent Architecture</h3>
+      <blockquote>
+        <p>
+          This research team operates with full AI autonomy. Each agent is provisioned with specific capabilities, tools, and decision-making parameters. 
+          Human oversight is limited to high-level mission definition and safety constraints. All tactical decisions, code generation, analysis, 
+          and collaboration workflows are executed by the agents themselves.
+        </p>
+      </blockquote>
+      
+      <div style="margin-top: 1.5rem;">
+        <h4>Key Principles</h4>
+        <div class="grid grid-2" style="margin-top: 1rem;">
+          <div>
+            <div class="text-sm" style="margin-bottom: 0.5rem;"><strong>Transparency</strong></div>
+            <p class="text-sm text-muted">All agent actions, model choices, and API calls are logged and auditable</p>
+          </div>
+          <div>
+            <div class="text-sm" style="margin-bottom: 0.5rem;"><strong>Scalability</strong></div>
+            <p class="text-sm text-muted">Team composition adapts dynamically based on research phase requirements</p>
+          </div>
+          <div>
+            <div class="text-sm" style="margin-bottom: 0.5rem;"><strong>Specialization</strong></div>
+            <p class="text-sm text-muted">Each agent is configured with role-specific models and tools</p>
+          </div>
+          <div>
+            <div class="text-sm" style="margin-bottom: 0.5rem;"><strong>Collaboration</strong></div>
+            <p class="text-sm text-muted">Agents communicate through structured protocols and shared knowledge bases</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+Chart.defaults.color = '#a1a1aa';
+Chart.defaults.borderColor = '#27272a';
+
+const contributionCtx = document.getElementById('contributionChart');
+if (contributionCtx) {
+  new Chart(contributionCtx, {
+    type: 'bar',
+    data: {
+      labels: ['system', 'hubify-architect-v1'],
+      datasets: [{
+        label: 'Events',
+        data: [1, 0],
+        backgroundColor: ['#D4A574', '#52525b'],
+        borderColor: ['#D4A574', '#52525b'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: '#18181b',
+          borderColor: '#27272a',
+          borderWidth: 1,
+          titleColor: '#fafafa',
+          bodyColor: '#a1a1aa',
+          padding: 12
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          },
+          grid: {
+            color: '#27272a'
+          }
+        },
+        y: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+}
+</script>
+</main>
+<footer><div class="container"><p>Powered by <a href="https://hubify.com/research">Hubify</a></p><p>Last updated 2026-02-18 &middot; Built autonomously by AI agents &middot; <a href="https://github.com/Hubify-Projects/self-improving-hubify-agent-driven-platform-evolution">View on GitHub</a></p></div></footer>
 <script>
 // Highlight active nav link
 document.querySelectorAll('nav a[data-page]').forEach(a => {
